@@ -165,3 +165,41 @@ Se eliminó el pedido con el id_pedido correspondiente a "p1001", quitando unica
 Se eliminaron todos los pedidos en el que el tiempo de entrega era exactamente 611 minutos, quitando los 9 registros que cumplían esta condición.
 
 <p align="center"><img width="818" height="420" alt="image" src="https://github.com/user-attachments/assets/505ee1e0-8ae1-40fd-a207-c06139e21d71" /></p>
+
+## Consultas con filtros y operadores
+
+### Consultos con filtros
+
+### Código
+
+- Seleccionar pedidos pagados con targeta de crédito
+
+```python
+db.Pedidos.find({
+  metodo_pago: "Credit Card"
+})
+```
+
+- Seleccionar los pedidos con un valor mayor a "30000"
+
+```python
+db.Pedidos.find({
+  valor_pedido: {$gt: 30000}
+})
+```
+
+### MongoDB
+
+Mediante el método "find()" se realizaron consultas utilizando filtro en el método de pago y valor de los pedidos. Permitiendo identificar patrones de compra y analizar el comportamiento de los usuarios.
+
+- Seleccionar pedidos pagados con targeta de crédito
+
+Se seleccionan los pedidos en los que el método de pago es "Credit Card".
+
+<p align="center"><img width="818" height="420" alt="image" src="https://github.com/user-attachments/assets/2d19beb0-1487-435b-aad4-e5909c9b791c" /></p>
+
+- Seleccionar los pedidos con un valor mayor a "30000"
+
+Con el operador $gt se seleccionan los pedido en los que el precio del pedido es mayor a "30000"
+
+<p align="center"><img width="818" height="420" alt="image" src="https://github.com/user-attachments/assets/2a7a61f4-bee8-4d9d-81fa-e8b1a4df483c" /></p>
