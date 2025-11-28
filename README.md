@@ -18,14 +18,14 @@ El dataset utilizado contiene información sobre los pedidos de comida rápida:
 
 | Campo                   |  Tipo        | Descripción |
 |-------------------------|--------------|-------------|
-| id_pedido               |  String      | Identificador único del pedido. |
+| id_pedido               |  String      | Identificador único asignado a cada pedido. |
 | hora_pedido             |  String      | Hora en la que se realizó el pedido. |
 | ciudad                  |  String      | Ciudad donde se hizo el pedido. |
-| tipo_cocina             |  String      | Tipo de cocina solicitada. |
-| valor_pedido            |  float       | Valor total del pedidio. |
+| tipo_cocina             |  String      | Tipo de cocina solicitada por el cliente. |
+| valor_pedido            |  float       | Valor total pagado por el pedidio. |
 | tiempo_entrega_minutos  |  Number      | Tiempo transcurrido desde que se realiza el pedido hasta su entrega |
 | metodo_pago             |  String      | Método de pago elegido por el cliente. |
-| cantidad_arículos       |  Number      | Número total de artículos que componen el pedido. |
+| cantidad_arículos       |  Number      | Número total de artículos incluidos en el pedido. |
 
 ## Autor
 
