@@ -56,8 +56,44 @@ Cuando se realiza un solo pedido, se utilliza "insertOne()" para insertar ese do
 
 <p align="center"><img width="818" height="420" alt="image" src="https://github.com/user-attachments/assets/0f36d9c0-0cea-4877-8f52-a23b8f2b5384" /></p>
 
-- InserMany()
+- InsertMany()
 
 Cuando se realiza varios pedidos a la vez, se utiliza "insertMany()" para insetar múltiples documentos en la colección de forma simultánea.
 
 <p align="center"><img width="818" height="420" alt="image" src="https://github.com/user-attachments/assets/88549e93-55d2-406c-80da-e534751b02ec" /></p>
+
+### Actualización
+
+### Código
+
+- Actualiza ciudad de un pedido
+
+```python
+db.Pedidos.updateOne(
+  {id_pedido: "p10001"},
+  {$set: {ciudad: "Medellín"}}
+)
+```
+- Actualizar la cantidad de artículos por id
+
+```python
+db.Pedidos.updateOne(
+  {id_pedido: "p10002"},
+  {$set: {cantidad_articulos: "2"}}
+)
+```
+### _MongoDB_ 
+
+Se actualizó la información de los pedidos por medio de "updateOne()", modificando la ciudad y cantidad de articulos de acuerdo con el id seleccionado.
+
+- Actualiza ciudad de un pedido
+
+Se cambio la ciudad del pedido "p1001" a "Medellín"
+
+<p align="center"><img width="818" height="420" alt="image" src="https://github.com/user-attachments/assets/47783750-577e-4ae3-a233-50bf0c94de74" /></p>
+
+- Actualizar la cantidad de artículos por id
+
+En el pedido con id "p10002"se modificó la cantidad a "2"
+
+<p align="center"><img width="818" height="420" alt="image" src="https://github.com/user-attachments/assets/fd57fe5d-694a-4873-aec5-7534696a0aae" /></p>
