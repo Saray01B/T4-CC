@@ -168,7 +168,7 @@ Se eliminaron todos los pedidos en el que el tiempo de entrega era exactamente 6
 
 ## Consultas con filtros y operadores
 
-### Consultos con filtros
+### Consultas con filtros
 
 ### Código
 
@@ -239,3 +239,46 @@ Con el operador **ne** se obtienen todos los pedidos en donde el tipo de cocina 
 Con la combinación de los operadores **gte** y **$lte** se obtienen los pedidos cuyo valor del pedido se encuentran por encima de "20000" y por debajo de "50000".
 
 <p align="center"><img width="818" height="420" alt="image" src="https://github.com/user-attachments/assets/eccd3932-32d7-4ed0-858e-24f946e38fd5" /></p>
+
+## Consultas de agregación para calcular estadísticas
+
+### Contar
+
+### Código
+
+- Contar total de pedidos
+
+```python
+db.Pedidos.aggregate([
+  {$count: "total_pedidos"}
+])
+```
+
+- Contar pedidos por ciudad
+
+```python
+db.Pedidos.aggregate([
+  {$group: {_id: "$ciudad", Total: {$sum: 1}}},
+  {$sort: {Total: -1}}
+])
+```
+
+### MongoDB
+
+Mediante el método "aggregate()" se realizaron consultas para contar y agrupar lo pedidos, permitiendo analizar información de los clientes según criterios como la cantidad y la ciudad de los pedidos.
+
+- Contar total de pedidos
+
+Se calcula el número total de pedido registrados en la colección para conocer el volumen de transacciones realizadas.
+
+**Resultado:** El total de pedidos realizados es de 493. Por lo que se puede conocer la demanda general de comida rápida y planificar estrategias basadas en la cantidad de pedidos.
+
+<p align="center"><img width="818" height="420"width="400" height="185" alt="image" src="https://github.com/user-attachments/assets/c240d2e5-999b-48a6-bb68-8726372033d4" /></p>
+
+- Contar pedidos por ciudad
+
+Se agrupan los pedidos según la ciudad y se calcula la cantidad de pedidos en cada una, permitiendo identificar las ciudades con mayor número de pedidos.
+
+**Resultado:** La ciudad con más pedidos es "Hyderabad" con 76 pedidos, seguida de "Ahmedabad" con 71. Esto permite identificar las ciudades donde hay mayor actividad de pedidos y puede ser clave para tomar desiciones de distribución y promoción.
+
+<p align="center"><img width="818" height="420" alt="image" src="https://github.com/user-attachments/assets/3da8da84-c82d-488c-94eb-5aba11af83ed" /></p>
