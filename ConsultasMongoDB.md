@@ -35,7 +35,7 @@ db.Pedidos.insertMany([
   cantidad_articulos: 4
 },
 {
-  id_pedido: "p10004",
+  id_pedido: "p10003",
   hora_pedido: "21:05",
   ciudad: "Barranquilla",
   tipo_cocina: "Chinese",
@@ -48,19 +48,53 @@ db.Pedidos.insertMany([
 ```
 ### _MongoDB_ 
 
-Mediante "insertOne()" para agregar un pedido y "inserMany" para agregar múltiples pedidos a la vez, se facilita la gestión eficiente de los pedidos, permitiendo detallar de forma organizada cada pedido.
+Mediante "insertOne()" para agregar un pedido y "inserMany" para agregar múltiples pedidos a la vez. Facilita la gestión eficiente de los pedidos y  permite detallar de forma organizada cada pedido.
 
 - InsertOne()
 
 Cuando se realiza un solo pedido, se utilliza "insertOne()" para insertar ese documento en la colección "Pedidos".
 
-<p align="center"><img width="818" height="420" alt="image" src="https://github.com/user-attachments/assets/0f36d9c0-0cea-4877-8f52-a23b8f2b5384" /></p>
+<p align="center"><img width="818" height="420" alt="image" src="https://github.com/user-attachments/assets/c451122b-3898-492f-a0e5-d81ac8bb7e8b" /></p>
 
 - InsertMany()
 
 Cuando se realiza varios pedidos a la vez, se utiliza "insertMany()" para insetar múltiples documentos en la colección de forma simultánea.
 
-<p align="center"><img width="818" height="420" alt="image" src="https://github.com/user-attachments/assets/88549e93-55d2-406c-80da-e534751b02ec" /></p>
+<p align="center"><img width="818" height="420" alt="image" src="https://github.com/user-attachments/assets/8c6cb36b-55aa-458e-9954-53664a1aab8b" /></p>
+
+### Selección
+
+### Código
+
+- Seleccionar pedidos por ciudad
+
+```python
+db.Pedidos.find({
+  ciudad: "Chennai"
+})
+```
+- Seleccionar pedidos por tipo de comida
+
+```python
+db.Pedidos.find({
+  tipo_cocina: "Mexican"
+})
+```
+### _MongoDB_ 
+
+Se realizaron consultas para obtener información específica de los pedidos según la ciudad y el tipo de cocina, utilizando el método "find()" para identificar y filtran los pedidos con base a los criterios definidos.
+
+- Seleccionar pedidos por ciudad
+
+Muestran los pedidos que se han realizado en la ciudad de "Chennai".
+
+<p align="center"><img width="818" height="420" alt="image" src="https://github.com/user-attachments/assets/ee25dc00-78a8-452c-a500-003bc9385b63" /></p>
+
+- Seleccionar pedidos por tipo de comida
+
+Muestra los pedido en los que el tipo de comida corresponde a "Mexican".
+
+<p align="center"><img width="818" height="420" alt="image" src="https://github.com/user-attachments/assets/4be2d6e7-31f6-4d6c-a4dd-db9b69c448a1" />></p>
 
 ### Actualización
 
@@ -84,16 +118,16 @@ db.Pedidos.updateOne(
 ```
 ### _MongoDB_ 
 
-Se actualizó la información de los pedidos por medio de "updateOne()", modificando la ciudad y cantidad de articulos de acuerdo con el id seleccionado.
+Se actualizó la información de los pedidos por medio de "updateOne()", modificando la ciudad y cantidad de articulos de acuerdo con el id seleccionado. (objetivo...)
 
 - Actualiza ciudad de un pedido
 
 Se cambio la ciudad del pedido "p1001" a "Medellín"
 
-<p align="center"><img width="818" height="420" alt="image" src="https://github.com/user-attachments/assets/47783750-577e-4ae3-a233-50bf0c94de74" /></p>
+<p align="center"><img width="818" height="420" alt="image" src="https://github.com/user-attachments/assets/4638f135-856a-466e-9a84-24f17cb606fa" /></p>
 
 - Actualizar la cantidad de artículos por id
 
 En el pedido con id "p10002"se modificó la cantidad a "2"
 
-<p align="center"><img width="818" height="420" alt="image" src="https://github.com/user-attachments/assets/fd57fe5d-694a-4873-aec5-7534696a0aae" /></p>
+<p align="center"><img width="818" height="420" alt="image" src="https://github.com/user-attachments/assets/d74c82f0-3737-492f-80fe-08ec741d8819" /></p>
