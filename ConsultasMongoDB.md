@@ -203,3 +203,39 @@ Se seleccionan los pedidos en los que el método de pago es "Credit Card".
 Con el operador $gt se seleccionan los pedido en los que el precio del pedido es mayor a "30000"
 
 <p align="center"><img width="818" height="420" alt="image" src="https://github.com/user-attachments/assets/2a7a61f4-bee8-4d9d-81fa-e8b1a4df483c" /></p>
+
+### Consultas con operadores
+
+### Código
+
+- Seleccionar pedidos que el tipo de cocina no es "Mexican"
+
+```python
+db.Pedidos.find({
+  tipo_cocina: {$ne: "Mexican"}
+})
+```
+
+- Seleccionar los pedidos con un valor entre "20000" y "50000"
+
+```python
+db.Pedidos.find({
+  valor_pedido: {$gte: 20000, $lte: 50000}
+})
+```
+
+### MongoDB
+
+Se utilizó **ne** para seleccionar los valores diferentes al establecido, así como **gte** y **lte** para filtrar valores dentro de un rango determinado.
+
+- Seleccionar pedidos que el tipo de cocina no es "Mexican"
+
+Con el operador **ne** se obtienen todos los pedidos en donde el tipo de cocina es diferente de "Mexican".
+
+<p align="center"><img width="818" height="420" alt="image" src="https://github.com/user-attachments/assets/a71d9dab-8234-42ad-b4fc-049045e6922d" /></p>
+
+- Seleccionar los pedidos con un valor entre "20000" y "50000"
+
+Con la combinación de los operadores **gte** y **$lte** se obtienen los pedidos cuyo valor del pedido se encuentran por encima de "20000" y por debajo de "50000".
+
+<p align="center"><img width="818" height="420" alt="image" src="https://github.com/user-attachments/assets/eccd3932-32d7-4ed0-858e-24f946e38fd5" /></p>
