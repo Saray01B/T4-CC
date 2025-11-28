@@ -118,7 +118,7 @@ db.Pedidos.updateOne(
 ```
 ### _MongoDB_ 
 
-Se actualizó la información de los pedidos por medio de "updateOne()", modificando la ciudad y cantidad de articulos de acuerdo con el id seleccionado. (objetivo...)
+Se actualizó la información de los pedidos por medio de "updateOne()", modificando la ciudad y cantidad de articulos de acuerdo con el id seleccionado. Permitiendo tener la información correcta en la colección "Pedidos".
 
 - Actualiza ciudad de un pedido
 
@@ -131,3 +131,37 @@ Se cambio la ciudad del pedido "p1001" a "Medellín"
 En el pedido con id "p10002"se modificó la cantidad a "2"
 
 <p align="center"><img width="818" height="420" alt="image" src="https://github.com/user-attachments/assets/d74c82f0-3737-492f-80fe-08ec741d8819" /></p>
+
+### Eliminación
+
+### Código
+
+- deleteOne()
+
+```python
+db.Pedidos.deleteOne({
+  id_pedido: "p10001"
+})
+```
+- deleteMany()
+
+```python
+db.Pedidos.deleteMany({
+  tiempo_entrega_minutos: 61
+})
+```
+### _MongoDB_ 
+
+Se eliminaron los pedidos utilizando los método "deleteOne()" y "deleteMany()", permitiendo quitar registros que cumplen con los criterios establecidos.
+
+- deleteOne()
+
+Se eliminó el pedido con el id_pedido correspondiente a "p1001", quitando unicamente este documento.
+
+<p align="center"><img width="818" height="420" alt="image" src="https://github.com/user-attachments/assets/5b1537d3-769d-4416-afc1-38dfc1f75abe" /></p>
+
+- deleteMany()
+
+Se eliminaron todos los pedidos en el que el tiempo de entrega era exactamente 611 minutos, quitando los 9 registros que cumplían esta condición.
+
+<p align="center"><img width="818" height="420" alt="image" src="https://github.com/user-attachments/assets/505ee1e0-8ae1-40fd-a207-c06139e21d71" /></p>
