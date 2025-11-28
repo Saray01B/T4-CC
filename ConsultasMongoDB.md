@@ -306,7 +306,7 @@ db.Pedidos.aggregate([
 
 ### MongoDB
 
-Se reaizaron consultas para sumar criterios como la cantidad de artículos, tipo de cocina y valor de los pedidos, permitiendo obtener información sobre las preferencias de los clientes.
+Se realizaron consultas para sumar criterios como la cantidad de artículos, tipo de cocina y valor de los pedidos, permitiendo obtener información sobre las preferencias de los clientes.
 
 - Sumar el valor total de todos los pedidos
 
@@ -320,6 +320,48 @@ Se calcula la suma total de los valores de todos los pedidos realizados para con
 
 Se agrupan los pedidos por tipo de cocina y se suma la cantidad de articulos de cada uno, identificando el tipo de cocina más solucitado.
 
-**Resultado:** El tipo de con más artículos pedidos es "Fast Food" con 311 artículos, seguido de "South Indian" con 303 artículos, evidenciando la preferencia de los cliente y facilitando la planificación del inventario.
+**Resultado:** El tipo de cocina con más artículos pedidos es "Fast Food" con 311 artículos, seguido de "South Indian" con 303 artículos, evidenciando la preferencia de los cliente y facilitando la planificación del inventario.
 
 <p align="center"><img width="818" height="420" alt="image" src="https://github.com/user-attachments/assets/0b032b51-1539-4de6-aeb9-1790eb4e45db" /></p>
+
+### Promedio
+
+### Código
+
+- Promedio del valor de pedido por ciudad
+  
+```python
+db.Pedidos.aggregate([
+  {$group: {_id: "$ciudad", valor_promedio: {$avg: "$valor_pedido"}}},
+  {$sort: {valor_promedio: -1}}
+])
+```
+
+- Promedio del tiempo de entrega por tipo de cocina
+
+```python
+db.Pedidos.aggregate([
+  {$group: {_id: "$tipo_cocina", tiempo_promedio: {$avg: "$tiempo_entrega_minutos"}}},
+  {$sort: {tiempo_promedio: -1}}
+])
+```
+
+### MongoDB
+
+Se realizaron consultas para calcular promedios del precio de los pedidos y el tiempo de entrega de acuerdo con la ciudad y el tipo de cocina, para determinar las ciudades con mayor gasto promedio y el tipo de cocina que requiere más tiempo de entrega.
+
+- Promedio del valor de pedido por ciudad
+
+Se calcula el valor promedio de los pedidos según la ciudad, permitiendo identificar donde los clienten gastan más en promedio.
+
+**Resultado:** La ciudad con el valor promedio más alto es "Barranquilla" con 52000, seguida de "Cali" con 38000,, lo que indica que en estas ciudades se concentran los pedido de mayor valor.
+
+<p align="center"><img width="818" height="420" alt="image" src="https://github.com/user-attachments/assets/afe4965e-f116-4fcb-97ad-3ccf00d8e060" /></p>
+
+- Promedio del tiempo de entrega por tipo de cocina
+
+Se agrupan los pedidos por tipo de cocina y se obtiene el promedio del tiempo de entrega, identificando que tipos de cocina tardan más o menos tiempo en ser entregados.
+
+**Resultado:** El tipo de cocina con el promedio del tiempo de entrega más alto es "South Indian" con 47,43 minutos y "Chinese" con 46,0 minutos, lo que evidencia la necesidad de optimizar la logistica para mejorar el tiempo de según el tipo de cocina.
+
+<p align="center"><img width="818" height="420" alt="image" src="https://github.com/user-attachments/assets/9ba5b209-0e9c-4ec1-ae6d-04908f4613e6" /></p>
