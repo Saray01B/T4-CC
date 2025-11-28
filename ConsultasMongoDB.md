@@ -282,3 +282,44 @@ Se agrupan los pedidos según la ciudad y se calcula la cantidad de pedidos en c
 **Resultado:** La ciudad con más pedidos es "Hyderabad" con 76 pedidos, seguida de "Ahmedabad" con 71. Esto permite identificar las ciudades donde hay mayor actividad de pedidos y puede ser clave para tomar desiciones de distribución y promoción.
 
 <p align="center"><img width="818" height="420" alt="image" src="https://github.com/user-attachments/assets/3da8da84-c82d-488c-94eb-5aba11af83ed" /></p>
+
+### Sumar
+
+### Código
+
+- Sumar el valor total de todos los pedidos
+
+```python
+db.Pedidos.aggregate([
+  {$group: {_id: null, total_valor: {$sum: "$valor_pedido"}}},
+])
+```
+
+- Sumar la cantidad total de artículos por tipo de cocina
+
+```python
+db.Pedidos.aggregate([
+  {$group: {_id: "$tipo_cocina", total_articulos: {$sum: "$cantidad_articulos"}}},
+  {$sort: {total_articulos: -1}}
+])
+```
+
+### MongoDB
+
+Se reaizaron consultas para sumar criterios como la cantidad de artículos, tipo de cocina y valor de los pedidos, permitiendo obtener información sobre las preferencias de los clientes.
+
+- Sumar el valor total de todos los pedidos
+
+Se calcula la suma total de los valores de todos los pedidos realizados para conocer el total generado por los pedidos.
+
+**Resultado:** El valor total de todos los pedidos realizados es de 399.955,75, permite evaluar el estado financiero y tomar decisiones estrategicas sobre los pedidos.
+
+<p align="center"><img width="818" height="420" alt="image" src="https://github.com/user-attachments/assets/dcf747fa-f29e-4323-b6fe-e5dd690356c4" /></p>
+
+- Sumar la cantidad total de artículos por tipo de cocina
+
+Se agrupan los pedidos por tipo de cocina y se suma la cantidad de articulos de cada uno, identificando el tipo de cocina más solucitado.
+
+**Resultado:** El tipo de con más artículos pedidos es "Fast Food" con 311 artículos, seguido de "South Indian" con 303 artículos, evidenciando la preferencia de los cliente y facilitando la planificación del inventario.
+
+<p align="center"><img width="818" height="420" alt="image" src="https://github.com/user-attachments/assets/0b032b51-1539-4de6-aeb9-1790eb4e45db" /></p>
